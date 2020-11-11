@@ -4,48 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/bg_register"
+    tools:context=".Login">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="40dp"
+        app:cardCornerRadius="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"
+             />
+
+    </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="230dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/bg_et_register"
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/passWord"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/bg_et_register"
         android:ems="10"
         android:hint="password"
         android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userName" />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="400px"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="75dp"
-        android:text="登录"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passWord" />
 
     <Button
         android:id="@+id/newUser"
         android:layout_width="400px"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_btn_redister"
         android:text="注册"
         app:layout_constraintStart_toEndOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/passWord" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="400px"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_btn_redister"
+        android:text="登录"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passWord" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
