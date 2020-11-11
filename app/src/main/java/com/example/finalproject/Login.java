@@ -28,8 +28,8 @@ public class Login extends AppCompatActivity {
         final EditText userName = (EditText)findViewById(R.id.userName);
         final EditText passWord = (EditText)findViewById(R.id.passWord);
         final Button login = findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener() {
 
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new Thread(new Runnable() {   //创建ui，主线程中运行不安全
@@ -45,8 +45,8 @@ public class Login extends AppCompatActivity {
                             Request request = new Request.Builder()
                                     .url("http://192.168.123.188:8080/user/login")   //本电脑的ip地址
                                     .post(RequestBody.create(MediaType.parse("application/json"),json))   //创建http客户端
-//                                    .header("token",token)
                                     .build();  //创造http请求
+
                             Response response = client.newCall(request).execute();  //执行发送的指令 ,若有返回值则储存其中
 
                             String responseData = response.body().string(); //获取返回回来的json结果

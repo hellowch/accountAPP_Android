@@ -41,6 +41,7 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
         holder.recy_type.setText(list.get(position).get("type").toString());
         holder.recy_handler.setText(list.get(position).get("handler").toString());
         holder.recy_money.setText(list.get(position).get("money").toString());
+        holder.recy_mark.setText(list.get(position).get("mark").toString());
     }
 
     @Override
@@ -49,13 +50,14 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView recy_time,recy_type,recy_handler,recy_money;
+        public TextView recy_time,recy_type,recy_handler,recy_money,recy_mark;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             recy_time = itemView.findViewById(R.id.recy_time);
             recy_type = itemView.findViewById(R.id.recy_type);
             recy_handler = itemView.findViewById(R.id.recy_handler);
             recy_money = itemView.findViewById(R.id.recy_money);
+            recy_mark = itemView.findViewById(R.id.recy_mark);
         }
     }
 }

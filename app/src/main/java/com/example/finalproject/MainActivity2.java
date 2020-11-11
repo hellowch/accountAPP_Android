@@ -44,10 +44,11 @@ import okhttp3.Response;
 
 public class MainActivity2 extends AppCompatActivity {
 
+    public Map<String,Object> map;
     public List<Map<String,Object>> list;
     public RecyclerView recyclerview;
-    public Map<String,Object> map;
     public ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class MainActivity2 extends AppCompatActivity {
         imageView = (ImageView)findViewById(R.id.imageViewId);
 
         Intent intent = getIntent();
-        String avatar = intent.getStringExtra("avatar");
+        final String avatar = intent.getStringExtra("avatar");
         final String token = intent.getStringExtra("token");
         Glide.with(MainActivity2.this).load(avatar).into(imageView);
         new Thread(new Runnable() {
@@ -87,6 +88,7 @@ public class MainActivity2 extends AppCompatActivity {
                         map.put("time",jsonObject.getString("time"));
                         map.put("type",jsonObject.getString("type"));
                         map.put("handler",jsonObject.getString("handler"));
+                        map.put("mark",jsonObject.getString("mark"));
                         map.put("user_id",jsonObject.getString("user_id"));
                         list.add(map);
                     }
@@ -95,12 +97,6 @@ public class MainActivity2 extends AppCompatActivity {
                     msg.what=1;
                     handler.sendMessage(msg);
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(MainActivity2.this,"查询成功",Toast.LENGTH_SHORT).show();
-                        }
-                    });
                 }catch (Exception e){
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
@@ -113,9 +109,16 @@ public class MainActivity2 extends AppCompatActivity {
             }
         }).start();
 
-
-
-
+        final ImageView new_account = findViewById(R.id.new_account);
+        new_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upaccount = new Intent("AddInformation");
+                upaccount.putExtra("token",token);
+                upaccount.putExtra("avatar",avatar);
+                startActivity(upaccount);
+            }
+        });
     }
 
     public Handler handler=new Handler() {
@@ -135,6 +138,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         }
     };
+
 
 
 
