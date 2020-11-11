@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_register"
+    tools:context=".AddInformation">
+
+    <EditText
+        android:id="@+id/add_money"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_et_register"
+        android:ems="10"
+        android:hint="金额"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/in_or_out" />
+
+    <Button
+        android:id="@+id/add_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="28dp"
+        android:hint="类别"
+        android:onClick="popupMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_time" />
+
+    <EditText
+        android:id="@+id/add_time"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_et_register"
+        android:ems="10"
+        android:hint="时间"
+        android:inputType="time"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_money" />
+
+    <EditText
+        android:id="@+id/add_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_et_register"
+        android:ems="10"
+        android:hint="收付款方"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_type" />
+
+    <EditText
+        android:id="@+id/add_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_et_register"
+        android:ems="10"
+        android:hint="备注"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_handler" />
+
+    <RadioGroup
+        android:id="@+id/in_or_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="120dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="收入信息"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/radioOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="支出信息"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="29dp"
+        android:text="提交"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_mark" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

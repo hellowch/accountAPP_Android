@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/investment"
+        android:title="投资理财"></item>
+    <item
+        android:id="@+id/clothing"
+        android:title="服装美容"></item>
+    <item
+        android:id="@+id/life"
+        android:title="生活日用"></item>
+    <item
+        android:id="@+id/food"
+        android:title="餐饮美食"></item>
+    <item
+        android:id="@+id/other"
+        android:title="其他"></item>
+</menu>

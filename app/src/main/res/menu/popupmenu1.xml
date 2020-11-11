@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/investment"
+        android:title="投资理财"></item>
+    <item
+        android:id="@+id/wage"
+        android:title="工资"></item>
+    <item
+        android:id="@+id/part_time"
+        android:title="兼职"></item>
+    <item
+        android:id="@+id/transfer"
+        android:title="转账"></item>
+    <item
+        android:id="@+id/other"
+        android:title="其他"></item>
+</menu>
