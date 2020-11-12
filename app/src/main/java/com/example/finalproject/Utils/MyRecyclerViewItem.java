@@ -109,11 +109,11 @@ public class MyRecyclerViewItem extends HorizontalScrollView {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            Log.i(getClass().getSimpleName(), "down");
+//            Log.i(getClass().getSimpleName(), "down");
             return true;
         }
         if (ev.getAction() == MotionEvent.ACTION_CANCEL || ev.getAction() == MotionEvent.ACTION_UP) {
-            Log.i(getClass().getSimpleName(), "up");
+//            Log.i(getClass().getSimpleName(), "up");
             if (isLeft) {
                 if (getScrollX() > range) {
                     isLeft = false;
@@ -131,7 +131,7 @@ public class MyRecyclerViewItem extends HorizontalScrollView {
             }
             return true;
         }
-        Log.i(getClass().getSimpleName(), "end");
+//        Log.i(getClass().getSimpleName(), "end");
         return super.onTouchEvent(ev);
     }
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.finalproject.Adapter.inaccountAdapter;
+import com.example.finalproject.Utils.MyRecyclerViewItem;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -119,7 +120,5 @@ public class InActivity extends AppCompatActivity {
             }
         }
     };
-
-
 
 }

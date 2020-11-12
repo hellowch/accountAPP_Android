@@ -5,9 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalproject.R;
+import com.example.finalproject.Utils.MyRecyclerViewItem;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,7 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
     public List<Map<String,Object>> list=new ArrayList<>();
     public Context con;
     public LayoutInflater inflater;
+
     public  inaccountAdapter(List<Map<String,Object>> list, Context con) {
         this.con = con;
         this.list = list;
@@ -34,12 +39,27 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         holder.recy_time.setText(list.get(position).get("time").toString());
         holder.recy_type.setText(list.get(position).get("type").toString());
         holder.recy_handler.setText(list.get(position).get("handler").toString());
         holder.recy_money.setText(list.get(position).get("money").toString());
         holder.recy_mark.setText(list.get(position).get("mark").toString());
+
+        //恢复状态
+        holder.recyclerViewItem.apply();
+        holder.modification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(), "编辑："+position, Toast.LENGTH_LONG).show();
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(), "删除："+position, Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     @Override
@@ -50,6 +70,9 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView recy_time,recy_type,recy_handler,recy_money,recy_mark;
+        public MyRecyclerViewItem recyclerViewItem;
+        public TextView delete,modification;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             recy_time = itemView.findViewById(R.id.recy_time);
@@ -57,6 +80,10 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
             recy_handler = itemView.findViewById(R.id.recy_handler);
             recy_money = itemView.findViewById(R.id.recy_money);
             recy_mark = itemView.findViewById(R.id.recy_mark);
+            recyclerViewItem=itemView.findViewById(R.id.scroll_item);
+            delete = itemView.findViewById(R.id.delete);
+            modification = itemView.findViewById(R.id.modification);
+
         }
     }
 }

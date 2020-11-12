@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.R;
+import com.example.finalproject.Utils.MyRecyclerViewItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,21 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
         holder.recy_address.setText(list.get(position).get("address").toString());
         holder.recy_money.setText(list.get(position).get("money").toString());
         holder.recy_mark.setText(list.get(position).get("mark").toString());
+
+        //恢复状态
+        holder.recyclerViewItem.apply();
+        holder.modification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(), "编辑："+position, Toast.LENGTH_LONG).show();
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(), "删除："+position, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -52,6 +69,9 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView recy_time,recy_type,recy_address,recy_money,recy_mark;
+        public MyRecyclerViewItem recyclerViewItem;
+        public TextView delete,modification;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             recy_time = itemView.findViewById(R.id.recy_time);
@@ -59,6 +79,9 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
             recy_address = itemView.findViewById(R.id.recy_address);
             recy_money = itemView.findViewById(R.id.recy_money);
             recy_mark = itemView.findViewById(R.id.recy_mark);
+            recyclerViewItem=itemView.findViewById(R.id.scroll_item);
+            delete = itemView.findViewById(R.id.delete);
+            modification = itemView.findViewById(R.id.modification);
         }
     }
 }
