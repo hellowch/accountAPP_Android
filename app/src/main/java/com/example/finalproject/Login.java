@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
                             Log.d("msg",""+jsonObject.getString("msg"));
 
                             if ( jsonObject.getString("msg").equals("登录成功")){
-                                Intent intent = new Intent("activity2");
+                                Intent intent = new Intent("TabWidget");
                                 intent.putExtra("avatar",avatar);
                                 intent.putExtra("token",token);
                                 startActivity(intent);

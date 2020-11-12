@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyRecyclerViewItem">
+        <attr name="left_width" format="integer"/>
+        <attr name="right_width" format="integer"/>
+        <attr name="move_range" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -5,6 +5,10 @@
 
     <gradient
         android:angle="90"
-        android:endColor="@color/colorcl"
-        android:startColor="@color/colorcl2"></gradient>
+        android:endColor="@color/color5"
+        >
+
+    </gradient>
 </shape>
+
+    <!--        android:startColor="@color/color4"-->

@@ -24,12 +24,12 @@
             android:text="type" />
 
         <TextView
-            android:id="@+id/recy_handler"
+            android:id="@+id/recy_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="handler" />
+            android:text="address" />
 
         <TextView
             android:id="@+id/recy_money"

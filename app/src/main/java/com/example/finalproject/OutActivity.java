@@ -6,31 +6,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.finalproject.Adapter.inaccountAdapter;
+import com.example.finalproject.Adapter.outaccountAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,28 +30,24 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class MainActivity2 extends AppCompatActivity {
+public class OutActivity extends AppCompatActivity {
 
     public Map<String,Object> map;
     public List<Map<String,Object>> list;
     public RecyclerView recyclerview;
-    public ImageView imageView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_out);
 
         list = new ArrayList<Map<String,Object>>();
         recyclerview = (RecyclerView) this.findViewById(R.id.recy);
 
-        imageView = (ImageView)findViewById(R.id.imageViewId);
-
         Intent intent = getIntent();
         final String avatar = intent.getStringExtra("avatar");
         final String token = intent.getStringExtra("token");
-        Glide.with(MainActivity2.this).load(avatar).into(imageView);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -71,7 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
                     String json = "";
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://192.168.123.188:8080/inaccount/inaccountAll")   //本电脑的ip地址
+                            .url("http://192.168.123.188:8080/outaccount/outaccountAll")   //本电脑的ip地址
                             .post(RequestBody.create(MediaType.parse("application/json"),json))   //创建http客户端
                             .header("token",token)
                             .build();  //创造http请求
@@ -87,22 +71,20 @@ public class MainActivity2 extends AppCompatActivity {
                         map.put("money",jsonObject.getString("money"));
                         map.put("time",jsonObject.getString("time"));
                         map.put("type",jsonObject.getString("type"));
-                        map.put("handler",jsonObject.getString("handler"));
+                        map.put("address",jsonObject.getString("address"));
                         map.put("mark",jsonObject.getString("mark"));
                         map.put("user_id",jsonObject.getString("user_id"));
                         list.add(map);
                     }
-
                     Message msg=new Message();
                     msg.what=1;
                     handler.sendMessage(msg);
-
                 }catch (Exception e){
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity2.this,"网络失败",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OutActivity.this,"网络失败",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -128,17 +110,15 @@ public class MainActivity2 extends AppCompatActivity {
                 case 1:
                     //添加分割线
                     recyclerview.addItemDecoration(new DividerItemDecoration(
-                            MainActivity2.this, DividerItemDecoration.VERTICAL));
-                    inaccountAdapter recy = new inaccountAdapter(list, MainActivity2.this);
+                            OutActivity.this, DividerItemDecoration.VERTICAL));
+                    outaccountAdapter recy = new outaccountAdapter(list, OutActivity.this);
                     //设置布局显示格式
-                    recyclerview.setLayoutManager(new LinearLayoutManager(MainActivity2.this));
+                    recyclerview.setLayoutManager(new LinearLayoutManager(OutActivity.this));
                     recyclerview.setAdapter(recy);
                     break;
-
             }
         }
     };
-
 
 
 

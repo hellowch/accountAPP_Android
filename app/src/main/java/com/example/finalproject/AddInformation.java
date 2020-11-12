@@ -44,7 +44,6 @@ public class AddInformation extends AppCompatActivity {
         Intent intent = getIntent();
         final String token = intent.getStringExtra("token");
         final String avatar = intent.getStringExtra("avatar");
-        System.out.println(token);
 
         add_money = (EditText) findViewById((R.id.add_money));
         add_mark = (EditText) findViewById((R.id.add_mark));
@@ -74,8 +73,7 @@ public class AddInformation extends AppCompatActivity {
                                         "time="  + add_time.getText().toString() + "&" +
                                         "type="  + type + "&" +
                                         "handler=" + add_handler.getText().toString() + "&" +
-                                        "mark="  + add_mark.getText().toString()
-                                    ;
+                                        "mark="  + add_mark.getText().toString();
 
                             System.out.println(json);
 
@@ -104,7 +102,7 @@ public class AddInformation extends AppCompatActivity {
                             Log.d("msg",""+jsonObject.getString("msg"));
 
                             if ( jsonObject.getString("msg").equals("添加成功")){
-                                Intent intent = new Intent("activity2");
+                                Intent intent = new Intent("TabWidget");
                                 intent.putExtra("token",token);
                                 intent.putExtra("avatar",avatar);
                                 startActivity(intent);
@@ -135,10 +133,10 @@ public class AddInformation extends AppCompatActivity {
     public void popupMenu(View v){
         PopupMenu popupMenu = new PopupMenu(this, v);
         MenuInflater inflater = popupMenu.getMenuInflater();
+        type_btn = (Button) this.findViewById(R.id.add_type);
         //添加点击事件
-        if (radioButton.getText().equals("收入信息")){
+         if (radioButton.getText().equals("收入信息")){
             popupMenu.setOnMenuItemClickListener((item) -> {
-                type_btn = (Button) this.findViewById(R.id.add_type);
                 switch (item.getItemId()){
                     case R.id.investment:
                         type_btn.setHint("投资理财");
@@ -167,7 +165,6 @@ public class AddInformation extends AppCompatActivity {
             inflater.inflate(R.menu.popupmenu1, popupMenu.getMenu());
         } else if (radioButton.getText().equals("支出信息")){
             popupMenu.setOnMenuItemClickListener((item) -> {
-                type_btn = (Button) this.findViewById(R.id.add_type);
                 switch (item.getItemId()){
                     case R.id.investment:
                         type_btn.setHint("投资理财");

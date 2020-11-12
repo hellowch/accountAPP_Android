@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.finalproject.Utils.MyRecyclerViewItem xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    app:move_range="20"
+    app:right_width="200">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:id="@+id/content_layout"
+            android:layout_width="413dp"
+            android:layout_height="60dp">
+
+            <TextView
+                android:id="@+id/recy_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="time" />
+
+            <TextView
+                android:id="@+id/recy_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="type" />
+
+            <TextView
+                android:id="@+id/recy_handler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="handler" />
+
+            <TextView
+                android:id="@+id/recy_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="money" />
+
+            <TextView
+                android:id="@+id/recy_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="mark" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightLayout"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@id/content_layout"
+            android:layout_alignBottom="@id/content_layout"
+            android:layout_toEndOf="@id/content_layout"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <!--自定义侧边菜单布局-->
+
+            <TextView
+                android:id="@+id/click"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="#ffffff"
+                android:textSize="26sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="修改"
+                android:textColor="#ff839dff"
+                android:textSize="26sp" />
+
+            <!--自定义侧边菜单布局结束-->
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</com.example.finalproject.Utils.MyRecyclerViewItem>
