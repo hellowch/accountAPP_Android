@@ -68,7 +68,7 @@
             android:layout_alignTop="@id/content_layout"
             android:layout_alignBottom="@id/content_layout"
             android:layout_toEndOf="@id/content_layout"
-            android:background="@color/colorAccent"
+            android:background="@color/colorcl"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="2">

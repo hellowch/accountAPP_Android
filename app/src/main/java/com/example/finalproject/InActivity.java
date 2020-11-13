@@ -50,7 +50,7 @@ public class InActivity extends AppCompatActivity {
         final String avatar = intent.getStringExtra("avatar");
         final String token = intent.getStringExtra("token");
 
-        inaccountList(token);
+        inaccountList(token,avatar);
 
         final ImageView new_account = findViewById(R.id.new_account);
         new_account.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class InActivity extends AppCompatActivity {
 
 
 
-    public void inaccountList(String token){
+    public void inaccountList(String token,String avatar){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -96,6 +96,7 @@ public class InActivity extends AppCompatActivity {
                         map.put("mark",jsonObject.getString("mark"));
                         map.put("user_id",jsonObject.getString("user_id"));
                         map.put("token",token);
+                        map.put("avatar",avatar);
                         list.add(map);
                     }
                     Message msg=new Message();

@@ -1,8 +1,11 @@
 package com.example.finalproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import com.example.finalproject.Utils.MyRecyclerViewItem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,13 +65,25 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
         holder.recy_mark.setText(list.get(position).get("mark").toString());
 
         String token = list.get(position).get("token").toString();
+        String avatar = list.get(position).get("avatar").toString();
 
         //恢复状态
         holder.recyclerViewItem.apply();
         holder.modification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.itemView.getContext(), "编辑："+list.get(position).get("id").toString(), Toast.LENGTH_LONG).show();
+                Intent intent=new Intent("AddInformation");
+                intent.putExtra("token",token);
+                intent.putExtra("avatar",avatar);
+                intent.putExtra("purpose","update");
+                intent.putExtra("money",list.get(position).get("money").toString());
+                intent.putExtra("time",list.get(position).get("time").toString());
+                intent.putExtra("type",list.get(position).get("type").toString());
+                intent.putExtra("handler",list.get(position).get("handler").toString());
+                intent.putExtra("mark",list.get(position).get("mark").toString());
+                intent.putExtra("id",list.get(position).get("id").toString());
+                intent.putExtra("chart","收入信息");
+                con.startActivity(intent);
             }
         });
 

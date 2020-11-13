@@ -1,6 +1,7 @@
 package com.example.finalproject.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -53,18 +54,30 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
 
         holder.recy_time.setText(list.get(position).get("time").toString());
         holder.recy_type.setText(list.get(position).get("type").toString());
-        holder.recy_address.setText(list.get(position).get("address").toString());
+        holder.recy_handler.setText(list.get(position).get("handler").toString());
         holder.recy_money.setText(list.get(position).get("money").toString());
         holder.recy_mark.setText(list.get(position).get("mark").toString());
 
         String token = list.get(position).get("token").toString();
+        String avatar = list.get(position).get("avatar").toString();
 
         //恢复状态
         holder.recyclerViewItem.apply();
         holder.modification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.itemView.getContext(), "编辑："+position, Toast.LENGTH_LONG).show();
+                Intent intent=new Intent("AddInformation");
+                intent.putExtra("token",token);
+                intent.putExtra("avatar",avatar);
+                intent.putExtra("purpose","update");
+                intent.putExtra("money",list.get(position).get("money").toString());
+                intent.putExtra("time",list.get(position).get("time").toString());
+                intent.putExtra("type",list.get(position).get("type").toString());
+                intent.putExtra("handler",list.get(position).get("handler").toString());
+                intent.putExtra("mark",list.get(position).get("mark").toString());
+                intent.putExtra("id",list.get(position).get("id").toString());
+                intent.putExtra("chart","支出信息");
+                con.startActivity(intent);
             }
         });
         holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +144,7 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView recy_time,recy_type,recy_address,recy_money,recy_mark;
+        public TextView recy_time,recy_type,recy_handler,recy_money,recy_mark;
         public MyRecyclerViewItem recyclerViewItem;
         public TextView delete,modification;
 
@@ -139,7 +152,7 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
             super(itemView);
             recy_time = itemView.findViewById(R.id.recy_time);
             recy_type = itemView.findViewById(R.id.recy_type);
-            recy_address = itemView.findViewById(R.id.recy_address);
+            recy_handler = itemView.findViewById(R.id.recy_address);
             recy_money = itemView.findViewById(R.id.recy_money);
             recy_mark = itemView.findViewById(R.id.recy_mark);
             recyclerViewItem=itemView.findViewById(R.id.scroll_item);
