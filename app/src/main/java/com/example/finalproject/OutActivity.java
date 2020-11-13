@@ -48,6 +48,23 @@ public class OutActivity extends AppCompatActivity {
         final String avatar = intent.getStringExtra("avatar");
         final String token = intent.getStringExtra("token");
 
+        outaccountList(token);
+        
+        final ImageView new_account = findViewById(R.id.new_account);
+        new_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upaccount = new Intent("AddInformation");
+                upaccount.putExtra("token",token);
+                upaccount.putExtra("avatar",avatar);
+                upaccount.putExtra("purpose","new");
+                startActivity(upaccount);
+            }
+        });
+    }
+
+
+    public void outaccountList(String token){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -74,6 +91,7 @@ public class OutActivity extends AppCompatActivity {
                         map.put("address",jsonObject.getString("address"));
                         map.put("mark",jsonObject.getString("mark"));
                         map.put("user_id",jsonObject.getString("user_id"));
+                        map.put("token",token);
                         list.add(map);
                     }
                     Message msg=new Message();
@@ -90,18 +108,8 @@ public class OutActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
-        final ImageView new_account = findViewById(R.id.new_account);
-        new_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent upaccount = new Intent("AddInformation");
-                upaccount.putExtra("token",token);
-                upaccount.putExtra("avatar",avatar);
-                startActivity(upaccount);
-            }
-        });
     }
+
 
     public Handler handler=new Handler() {
         @Override
@@ -119,7 +127,5 @@ public class OutActivity extends AppCompatActivity {
             }
         }
     };
-
-
 
 }

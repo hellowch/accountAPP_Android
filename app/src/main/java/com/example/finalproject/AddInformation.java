@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
@@ -15,10 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -33,6 +29,9 @@ public class AddInformation extends AppCompatActivity {
     public RadioButton radioButton;
     public String type = "";
     public EditText add_money,add_mark,add_time,add_handler;
+    public String token;
+    public String avatar;
+    public String purpose;
 
 
     @Override
@@ -42,8 +41,9 @@ public class AddInformation extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        final String token = intent.getStringExtra("token");
-        final String avatar = intent.getStringExtra("avatar");
+        token = intent.getStringExtra("token");
+        avatar = intent.getStringExtra("avatar");
+        purpose = intent.getStringExtra("purpose");
 
         add_money = (EditText) findViewById((R.id.add_money));
         add_mark = (EditText) findViewById((R.id.add_mark));
@@ -59,7 +59,15 @@ public class AddInformation extends AppCompatActivity {
             }
         });
 
+        if (purpose.equals("new")){
+            add_new();
+        }else if (purpose.equals("update")){
+            update();
+        }
 
+    }
+
+    public void update(){
         final Button update = findViewById(R.id.update);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +77,81 @@ public class AddInformation extends AppCompatActivity {
                     public void run() {
                         try {
                             String json =
-                                        "money=" + add_money.getText().toString() + "&" +
-                                        "time="  + add_time.getText().toString() + "&" +
-                                        "type="  + type + "&" +
-                                        "handler=" + add_handler.getText().toString() + "&" +
-                                        "mark="  + add_mark.getText().toString();
+                                    "money=" + add_money.getText().toString() + "&" +
+                                            "time="  + add_time.getText().toString() + "&" +
+                                            "type="  + type + "&" +
+                                            "handler=" + add_handler.getText().toString() + "&" +
+                                            "mark="  + add_mark.getText().toString();
+
+                            System.out.println(json);
+
+                            OkHttpClient client = new OkHttpClient();
+                            Request request = null;
+                            if (radioButton.getText().equals("收入信息")){
+                                request = new Request.Builder()
+                                        .url("http://192.168.123.188:8080/inaccount/inaccountUpdate")   //本电脑的ip地址
+                                        .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
+                                        .header("token",token)
+                                        .build();  //创造http请求
+                            }else if (radioButton.getText().equals("支出信息")){
+                                request = new Request.Builder()
+                                        .url("http://192.168.123.188:8080/outaccount/outaccountUpdate")   //本电脑的ip地址
+                                        .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
+                                        .header("token",token)
+                                        .build();  //创造http请求
+                            }
+
+
+                            Response response = client.newCall(request).execute();  //执行发送的指令 ,若有返回值则储存其中
+
+                            String responseData = response.body().string(); //获取返回回来的json结果
+
+                            JSONObject jsonObject = new JSONObject(responseData);
+                            Log.d("msg",""+jsonObject.getString("msg"));
+
+                            if ( jsonObject.getString("msg").equals("添加成功")){
+                                Intent intent = new Intent("TabWidget");
+                                intent.putExtra("token",token);
+                                intent.putExtra("avatar",avatar);
+                                startActivity(intent);
+                            }else {
+                                runOnUiThread(new Runnable() {  //只有主线程能改变ui，这是在子线程中改变ui的方式
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(AddInformation.this,"添加失败",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            runOnUiThread(new Runnable() {  //只有主线程能改变ui，这是在子线程中改变ui的方式
+                                @Override
+                                public void run() {
+                                    Toast.makeText(AddInformation.this,"网络失败",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+                }).start();
+            }
+        });
+    }
+
+    public void add_new(){
+        final Button update = findViewById(R.id.update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {   //创建ui，主线程中运行不安全
+                    @Override
+                    public void run() {
+                        try {
+                            String json =
+                                    "money=" + add_money.getText().toString() + "&" +
+                                            "time="  + add_time.getText().toString() + "&" +
+                                            "type="  + type + "&" +
+                                            "handler=" + add_handler.getText().toString() + "&" +
+                                            "mark="  + add_mark.getText().toString();
 
                             System.out.println(json);
 
@@ -127,7 +205,6 @@ public class AddInformation extends AppCompatActivity {
                 }).start();
             }
         });
-
     }
 
     public void popupMenu(View v){
@@ -194,4 +271,6 @@ public class AddInformation extends AppCompatActivity {
         }
         popupMenu.show();
     }
+
+
 }

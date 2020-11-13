@@ -33,7 +33,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TabWidget"  android:theme="@android:style/Theme.NoTitleBar">
+        <activity
+            android:name=".TabWidget"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="TabWidget" />
 

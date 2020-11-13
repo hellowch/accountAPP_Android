@@ -37,6 +37,7 @@ public class InActivity extends AppCompatActivity {
     public List<Map<String,Object>> list;
     public RecyclerView recyclerview;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,25 @@ public class InActivity extends AppCompatActivity {
         final String avatar = intent.getStringExtra("avatar");
         final String token = intent.getStringExtra("token");
 
+        inaccountList(token);
+
+        final ImageView new_account = findViewById(R.id.new_account);
+        new_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upaccount = new Intent("AddInformation");
+                upaccount.putExtra("token",token);
+                upaccount.putExtra("avatar",avatar);
+                upaccount.putExtra("purpose","new");
+                startActivity(upaccount);
+            }
+        });
+    }
+
+
+
+
+    public void inaccountList(String token){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -75,6 +95,7 @@ public class InActivity extends AppCompatActivity {
                         map.put("handler",jsonObject.getString("handler"));
                         map.put("mark",jsonObject.getString("mark"));
                         map.put("user_id",jsonObject.getString("user_id"));
+                        map.put("token",token);
                         list.add(map);
                     }
                     Message msg=new Message();
@@ -91,18 +112,8 @@ public class InActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
-        final ImageView new_account = findViewById(R.id.new_account);
-        new_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent upaccount = new Intent("AddInformation");
-                upaccount.putExtra("token",token);
-                upaccount.putExtra("avatar",avatar);
-                startActivity(upaccount);
-            }
-        });
     }
+
 
     public Handler handler=new Handler() {
         @Override
