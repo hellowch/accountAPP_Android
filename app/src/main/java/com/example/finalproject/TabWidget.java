@@ -4,10 +4,8 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Message;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TabHost;
@@ -15,11 +13,6 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.HashMap;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -67,6 +60,24 @@ public class TabWidget extends TabActivity  {
                 .setContent(intentTab);//设置显示的intent，这里的参数也可以是R.id.xxx
         tabHost.addTab(spec);//添加进tabHost
 
+        //第三个TAB
+        intentTab = new Intent(this, CountActivityIn.class);
+        intentTab.putExtra("token", token);
+        intentTab.putExtra("avatar", avatar);
+        spec = tabHost.newTabSpec("tab3")
+                .setIndicator("收入统计")
+                .setContent(intentTab);
+        tabHost.addTab(spec);
+
+        //第四个TAB
+        intentTab = new Intent(this, CountActivityOut.class);
+        intentTab.putExtra("token", token);
+        intentTab.putExtra("avatar", avatar);
+        spec = tabHost.newTabSpec("tab4")
+                .setIndicator("支出统计")
+                .setContent(intentTab);
+        tabHost.addTab(spec);
+
 //        .setIndicator("Tab2", res.getDrawable(android.R.drawable.ic_menu_camera))//设置名称以及图标
         tabHost.setCurrentTab(0);
 
@@ -87,7 +98,7 @@ public class TabWidget extends TabActivity  {
                                 String json = "";
                                 OkHttpClient client = new OkHttpClient();
                                 Request request = new Request.Builder()
-                                        .url("http://192.168.123.188:8080/user/logout")   //本电脑的ip地址
+                                        .url("http://weichenhao.cn:8080/user/logout")   //本电脑的ip地址
                                         .post(RequestBody.create(MediaType.parse("application/json"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求

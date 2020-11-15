@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
 
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                    .url("http://192.168.123.188:8080/user/login")   //本电脑的ip地址
+                                    .url("http://weichenhao.cn:8080/user/login")   //本电脑的ip地址
                                     .post(RequestBody.create(MediaType.parse("application/json"),json))   //创建http客户端
                                     .build();  //创造http请求
 
@@ -100,7 +100,7 @@ public class Login extends AppCompatActivity {
 
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                    .url("http://192.168.123.188:8080/user/register")   //本电脑的ip地址
+                                    .url("http://weichenhao.cn:8080/user/register")   //本电脑的ip地址
                                     .post(RequestBody.create(MediaType.parse("application/json"),json))   //创建http客户端
 //                                    .header("token",token)
                                     .build();  //创造http请求

@@ -12,6 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".CountActivityOut">
+            <intent-filter>
+                <action android:name="CountActivityOut" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CountActivityIn">
+            <intent-filter>
+                <action android:name="CountActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AddInformation">
             <intent-filter>
                 <action android:name="AddInformation" />
