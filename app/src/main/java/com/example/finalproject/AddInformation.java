@@ -14,11 +14,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import org.json.JSONObject;
+import com.example.finalproject.pojo.Urls;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import org.json.JSONObject;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -106,7 +104,7 @@ public class AddInformation extends AppCompatActivity {
                                         "handler=" + add_handler.getText().toString() + "&" +
                                         "mark="  + add_mark.getText().toString();
                                 request = new Request.Builder()
-                                        .url("http://weichenhao.cn:8080/inaccount/inaccountUpdate")   //本电脑的ip地址
+                                        .url(Urls.getUrl() +"inaccount/inaccountUpdate")   //本电脑的ip地址
                                         .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求
@@ -119,7 +117,7 @@ public class AddInformation extends AppCompatActivity {
                                         "address=" + add_handler.getText().toString() + "&" +
                                         "mark="  + add_mark.getText().toString();
                                 request = new Request.Builder()
-                                        .url("http://weichenhao.cn:8080/outaccount/outaccountUpdate")   //本电脑的ip地址
+                                        .url(Urls.getUrl() +"outaccount/outaccountUpdate")   //本电脑的ip地址
                                         .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求
@@ -181,7 +179,7 @@ public class AddInformation extends AppCompatActivity {
                                                 "mark="  + add_mark.getText().toString();
 
                                 request = new Request.Builder()
-                                        .url("http://weichenhao.cn:8080/inaccount/inaccountNew")   //本电脑的ip地址
+                                        .url(Urls.getUrl() +"inaccount/inaccountNew")   //本电脑的ip地址
                                         .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求
@@ -194,7 +192,7 @@ public class AddInformation extends AppCompatActivity {
                                                 "mark="  + add_mark.getText().toString();
 
                                 request = new Request.Builder()
-                                        .url("http://weichenhao.cn:8080/outaccount/outaccountNew")   //本电脑的ip地址
+                                        .url(Urls.getUrl() +"outaccount/outaccountNew")   //本电脑的ip地址
                                         .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求

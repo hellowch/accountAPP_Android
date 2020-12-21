@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.example.finalproject.pojo.Urls;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -98,7 +99,7 @@ public class TabWidget extends TabActivity  {
                                 String json = "";
                                 OkHttpClient client = new OkHttpClient();
                                 Request request = new Request.Builder()
-                                        .url("http://weichenhao.cn:8080/user/logout")   //本电脑的ip地址
+                                        .url(Urls.getUrl() +"user/logout")   //本电脑的ip地址
                                         .post(RequestBody.create(MediaType.parse("application/json"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求

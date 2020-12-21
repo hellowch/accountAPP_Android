@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.finalproject.pojo.Urls;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -77,7 +78,7 @@ public class CountActivityIn extends AppCompatActivity {
                     String json = "";
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://weichenhao.cn:8080/inaccount/inaccountCount")
+                            .url(Urls.getUrl() +"inaccount/inaccountCount")
                             .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                             .header("token",token)
                             .build();  //创造http请求

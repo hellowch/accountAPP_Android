@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.finalproject.pojo.Urls;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -68,7 +69,7 @@ public class CountActivityOut extends AppCompatActivity {
                     String json = "";
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://weichenhao.cn:8080/outaccount/outaccountCount")
+                            .url(Urls.getUrl() +"outaccount/outaccountCount")
                             .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                             .header("token",token)
                             .build();  //创造http请求
