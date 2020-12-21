@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.R;
 import com.example.finalproject.Utils.MyRecyclerViewItem;
+import com.example.finalproject.pojo.Urls;
 
 import org.json.JSONObject;
 
@@ -87,11 +88,10 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
                     @Override
                     public void run() {
                         try {
-//                            192.168.123.188
                             String json = "id="  + list.get(position).get("id").toString();
                             OkHttpClient client = new OkHttpClient();
                             Request request = new Request.Builder()
-                                    .url("http://weichenhao.cn:8080/outaccount/outaccountDelete")   //本电脑的ip地址
+                                    .url(Urls.getUrl() +"outaccount/outaccountDelete")   //本电脑的ip地址
                                     .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                                     .header("token",token)
                                     .build();  //创造http请求
