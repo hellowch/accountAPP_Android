@@ -91,6 +91,25 @@ public class TabWidget extends TabActivity  {
         //添加点击事件
         popupMenu.setOnMenuItemClickListener((item) -> {
             switch (item.getItemId()){
+                //便签
+                case R.id.memo:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try{
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(TabWidget.this,"网络失败",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    }).start();
+                //退出登录
                 case R.id.exit:
                     new Thread(new Runnable() {
                         @Override
