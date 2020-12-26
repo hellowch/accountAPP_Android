@@ -45,8 +45,10 @@ import okhttp3.Response;
 
 import static java.util.Arrays.*;
 
+/**
+ * 收入情况统计图模块
+ */
 public class CountActivityIn extends AppCompatActivity {
-
 
     public String token,avatar;
     public BarChart barChart;

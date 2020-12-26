@@ -38,6 +38,9 @@ import okhttp3.Response;
 
 import static java.util.Arrays.asList;
 
+/**
+ * 消费情况统计图模块
+ */
 public class CountActivityOut extends AppCompatActivity {
 
     public String token,avatar;

@@ -12,7 +12,9 @@ import android.view.WindowManager;
 import android.widget.HorizontalScrollView;
 import com.example.finalproject.R;
 
-
+/**
+ * 重写RecyclerViewItem 添加左右滑动功能
+ */
 public class MyRecyclerViewItem extends HorizontalScrollView {
 
     public MyRecyclerViewItem(Context context) {

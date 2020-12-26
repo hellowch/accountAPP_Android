@@ -32,6 +32,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 收入情况列表界面模块
+ */
 public class InActivity extends AppCompatActivity {
 
     public Map<String,Object> map;

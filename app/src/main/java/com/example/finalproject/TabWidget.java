@@ -97,7 +97,10 @@ public class TabWidget extends TabActivity  {
                         @Override
                         public void run() {
                             try{
-
+                                Intent memo = new Intent("MemoActivity");
+                                memo.putExtra("token", token);
+                                memo.putExtra("avatar", avatar);
+                                startActivity(memo);
                             }catch (Exception e){
                                 e.printStackTrace();
                                 runOnUiThread(new Runnable() {
@@ -109,6 +112,7 @@ public class TabWidget extends TabActivity  {
                             }
                         }
                     }).start();
+                    return true;
                 //退出登录
                 case R.id.exit:
                     new Thread(new Runnable() {

@@ -35,7 +35,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
+/**
+ * 收入情况列表界面数据分配模块
+ */
 public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.ViewHolder>{
 
     public List<Map<String,Object>> list=new ArrayList<>();

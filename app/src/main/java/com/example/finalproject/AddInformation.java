@@ -24,6 +24,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 账单的记账与更新账单模块
+ */
 public class AddInformation extends AppCompatActivity {
 
     public Button type_btn,update;

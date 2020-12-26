@@ -29,6 +29,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 支出情况列表界面数据分配模块
+ */
 public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.ViewHolder>{
 
     public List<Map<String,Object>> list=new ArrayList<>();

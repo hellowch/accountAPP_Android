@@ -31,6 +31,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 支出情况列表界面模块
+ */
 public class OutActivity extends AppCompatActivity {
 
     public Map<String,Object> map;
