@@ -13,6 +13,7 @@ import android.view.View;
 public class MemoActivity extends AppCompatActivity {
 
     public String token,avatar;
+    public String purpose;   //用于便签编辑模块模块判断当前是新便签还是修改
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +25,12 @@ public class MemoActivity extends AppCompatActivity {
         avatar = intent.getStringExtra("avatar");
     }
 
-    public void updateClick(View v){
+    public void newClick(View v){
+        purpose = "new";
         Intent intent = new Intent(MemoActivity.this,MemoUpdateActivity.class);
         intent.putExtra("token",token);
         intent.putExtra("avatar",avatar);
+        intent.putExtra("purpose",purpose);
         startActivity(intent);
     }
 }

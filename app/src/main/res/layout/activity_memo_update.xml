@@ -7,13 +7,27 @@
     android:background="@drawable/bg_register"
     tools:context=".MemoUpdateActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="167dp"
-        android:layout_marginTop="217dp"
-        android:text="修改"
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_et_register"
+        android:ems="10"
+        android:hint="请输入文本"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        android:textColor="@color/color3"
+        android:textColorHint="@color/color2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="56dp"
+        android:text="提交"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

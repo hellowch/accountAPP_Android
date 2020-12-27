@@ -182,7 +182,7 @@ public class AddInformation extends AppCompatActivity {
                                                 "mark="  + add_mark.getText().toString();
 
                                 request = new Request.Builder()
-                                        .url(Urls.getUrl() +"inaccount/inaccountNew")   //本电脑的ip地址
+                                        .url(Urls.getUrl() +"inaccount/inaccountNew")
                                         .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"),json))   //创建http客户端
                                         .header("token",token)
                                         .build();  //创造http请求
