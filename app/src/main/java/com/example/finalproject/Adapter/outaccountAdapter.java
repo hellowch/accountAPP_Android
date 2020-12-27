@@ -101,8 +101,6 @@ public class outaccountAdapter extends RecyclerView.Adapter<outaccountAdapter.Vi
                             Response response = client.newCall(request).execute();  //执行发送的指令 ,若有返回值则储存其中
                             String responseData = response.body().string(); //获取返回回来的json结果
                             JSONObject jsonObject = new JSONObject(responseData);
-                            String msg1 = jsonObject.getString("msg");
-                            System.out.println(msg1);
 
                             position2 = position;
                             Message msg=new Message();

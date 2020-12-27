@@ -16,48 +16,17 @@
         <LinearLayout
             android:id="@+id/content_layout"
             android:layout_width="422dp"
-            android:layout_height="60dp">
+            android:layout_height="wrap_content"
+            android:minHeight="60dp">
 
             <TextView
-                android:id="@+id/recy_time"
+                android:id="@+id/recy_memo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="time" />
-
-            <TextView
-                android:id="@+id/recy_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="type" />
-
-            <TextView
-                android:id="@+id/recy_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="address" />
-
-            <TextView
-                android:id="@+id/recy_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="money" />
-
-            <TextView
-                android:id="@+id/recy_mark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="mark" />
+                android:text="便签内容" />
 
         </LinearLayout>
 

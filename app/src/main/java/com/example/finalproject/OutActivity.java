@@ -36,9 +36,11 @@ import okhttp3.Response;
  */
 public class OutActivity extends AppCompatActivity {
 
+    public String token,avatar;
     public Map<String,Object> map;
     public List<Map<String,Object>> list;
     public RecyclerView recyclerview;
+    public ImageView new_account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +51,12 @@ public class OutActivity extends AppCompatActivity {
         recyclerview = (RecyclerView) this.findViewById(R.id.recy);
 
         Intent intent = getIntent();
-        final String avatar = intent.getStringExtra("avatar");
-        final String token = intent.getStringExtra("token");
+        avatar = intent.getStringExtra("avatar");
+        token = intent.getStringExtra("token");
 
-        outaccountList(token,avatar);
+        outaccountList();
         
-        final ImageView new_account = findViewById(R.id.new_account);
+        new_account = findViewById(R.id.new_account);
         new_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +70,7 @@ public class OutActivity extends AppCompatActivity {
     }
 
 
-    public void outaccountList(String token,String avatar){
+    public void outaccountList(){
         new Thread(new Runnable() {
             @Override
             public void run() {

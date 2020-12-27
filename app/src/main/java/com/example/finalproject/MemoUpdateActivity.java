@@ -30,6 +30,7 @@ public class MemoUpdateActivity extends AppCompatActivity {
     public String token,avatar,purpose;
     public EditText memoText;
     public Button update;
+    public String memo,memoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class MemoUpdateActivity extends AppCompatActivity {
         token = intent.getStringExtra("token");
         avatar = intent.getStringExtra("avatar");
         purpose = intent.getStringExtra("purpose");
+        memoId = intent.getStringExtra("id");
+        memo = intent.getStringExtra("memo");
 
         memoText = (EditText) findViewById(R.id.edit_text);
         update = (Button) findViewById(R.id.update);
@@ -48,6 +51,8 @@ public class MemoUpdateActivity extends AppCompatActivity {
         if (purpose.equals("new")){
             memoNew();
         }else if (purpose.equals("update")){
+            //将原本的内容写到编辑页面
+            memoText.setText(memo);
             memoUpdate();
         }
 
@@ -124,7 +129,8 @@ public class MemoUpdateActivity extends AppCompatActivity {
                             Request request = null;
 
                             //发送内容
-                            String json = "memo=" + memoText.getText().toString();
+                            String json = "id=" + memoId + "&" +
+                                    "memo=" + memoText.getText().toString();
 
                             //配置接口，打包发送内容
                             request = new Request.Builder()

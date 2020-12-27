@@ -107,8 +107,6 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
                             Response response = client.newCall(request).execute();  //执行发送的指令 ,若有返回值则储存其中
                             String responseData = response.body().string(); //获取返回回来的json结果
                             JSONObject jsonObject = new JSONObject(responseData);
-                            String msg1 = jsonObject.getString("msg");
-                            System.out.println(msg1);
 
                             position2 = position;
                             Message msg=new Message();
@@ -169,6 +167,7 @@ public class inaccountAdapter extends RecyclerView.Adapter<inaccountAdapter.View
             recy_handler = itemView.findViewById(R.id.recy_handler);
             recy_money = itemView.findViewById(R.id.recy_money);
             recy_mark = itemView.findViewById(R.id.recy_mark);
+
             recyclerViewItem=itemView.findViewById(R.id.scroll_item);
             delete = itemView.findViewById(R.id.delete);
             modification = itemView.findViewById(R.id.modification);

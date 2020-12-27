@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MemoUpdateActivity"></activity>
+        <activity android:name=".MemoUpdateActivity">
+            <intent-filter>
+                <action android:name="MemoUpdateActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MemoActivity">
             <intent-filter>
                 <action android:name="MemoActivity" />
